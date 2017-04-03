@@ -1,0 +1,499 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_MACBOOK-INFLUX",
+      "label": "macbook-influx",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 2,
+  "hideControls": false,
+  "id": null,
+  "links": [],
+  "refresh": false,
+  "rows": [
+    {
+      "collapse": false,
+      "height": 236,
+      "panels": [
+        {
+          "aliasColors": {
+            "cpu.idle": "#CFFAFF",
+            "cpu.system": "#EAB839",
+            "idle": "#CFFAFF",
+            "system": "#EAB839"
+          },
+          "bars": false,
+          "datasource": "${DS_MACBOOK-INFLUX}",
+          "fill": 7,
+          "id": 1,
+          "interval": ">10s",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$col",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "usage_user"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "user"
+                    ],
+                    "type": "alias"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "usage_idle"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "idle"
+                    ],
+                    "type": "alias"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "usage_system"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "system"
+                    ],
+                    "type": "alias"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "cpu",
+                  "operator": "=",
+                  "value": "cpu-total"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$hostname/"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Swimlane Aggregate: $hostname",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "101",
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Combined Processor CPU Swimlane",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "150",
+      "panels": [
+        {
+          "aliasColors": {
+            "cpu.idle": "#CFFAFF",
+            "cpu.system": "#EAB839",
+            "idle": "#CFFAFF",
+            "system": "#EAB839"
+          },
+          "bars": false,
+          "datasource": "${DS_MACBOOK-INFLUX}",
+          "fill": 7,
+          "height": "150px",
+          "id": 2,
+          "interval": ">10s",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "minSpan": 2,
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": "cpu",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$col",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "cpu",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "usage_user"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "user"
+                    ],
+                    "type": "alias"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "usage_idle"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "idle"
+                    ],
+                    "type": "alias"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "usage_system"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  },
+                  {
+                    "params": [
+                      "system"
+                    ],
+                    "type": "alias"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "cpu",
+                  "operator": "=~",
+                  "value": "/^$cpu$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$hostname/"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$cpu",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": false,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": "101",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Per-processor CPU swimlane",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "content": "CPU swimlanes are a mashup of a percentage plots and [swimlane diagram.](https://en.wikipedia.org/wiki/Swim_lane) The goal is to graphically show the usage of each processor and its temporal relation to usage of other processors. The swimlane diagram is often used in process flow diagrams to show functional or organizational processes and how they operate in parallel, when possible. The result is a visualization of the data available in tools such as the command-line oriented [mpstat](https://en.wikipedia.org/wiki/Mpstat), commonly found in UNIX/Linux distros.\n\nPerformance engineers and capacity planners often use CPU usage for systems analysis. For multiprocessor machines, summary data as often seen on CPU usage dashboard or tools can hide system bottlenecks. For example, a 10-CPU system where one CPU is 100% busy running a single-threaded application will appear to be only 10% busy in aggregate. Tools like mpstat are useful for analyzing per-processor usage, but quickly become unwieldy when there are many processors and are not well suited to show trends over time. Also, when a process is migrated to another CPU, mpstat is not well suited to correlate this movement with other temporal changes to the system. This is the perfect job for a nice dashboard.\n\n#### Dashboard Design\n\nThe CPU percentage plots are designed to allow the observer to quickly differentiate between \"user\" usage by applications versus the \"system\" usage by the kernel. This is accomplished by layering the user, idle, and system usage metrics from bottom to top. This is visually effective because as user usage often causes system usage. As the CPUs become busier, the idle time in the middle gets squeezed and can disappear entirely. The balance of user to system time is readily discernable.\n\nFor many systems, user usage is _good_ and follows the tenets of _good things go up and to the right_ and _good things are green._ Similarly, system usage is overhead and grows down from the ceiling, reinforcing the tenets that _bad things go down and to the right_ and _worrisome things are amber_. Idleness is a wide open blue sky.\n\nAnother design element to the dashboard is that the per-CPU swimlanes are not encumbered by axes. This allows the dashboard to scale to dozens of CPUs without becoming cluttered by redundant text.\n\n#### Scaling\n\nFor large systems, it can be useful to modify this basic dashboard:\n+ reorganize the per-CPU enumeration to reflect NUMA associations\n+ for dozens of CPUs, the row sizes can be reduced to show hundreds of CPUs on a relatively small screen\n\n#### Porting\n\nDifferent OSes offer different CPU usage data:\n+ additional metrics may be needed to ensure the total reaches 100%\n+ metrics can be collected as counters, thus the grafana queries may need to be changed from mean() to non_negative_derivative()\n\n#### Administrivia\n\nThis CPU swimlane dashboard is developed for MacOS systems using [grafana v4.1](https://grafana.com), [influxdb](https://github.com/influxdata/influxdb), and the [telegraf](https://github.com/influxdata/telegraf) metrics aggregator where the CPU usage details are available for only user, system, and idle usage.\n\nThis dashboard is licensed under a Creative Commons Attribution 4.0 International License by [Richard.Elling@RichardElling.com](mailto:Richard.Elling@RichardElling.com?subject=CPU_Swimlanes)\n",
+          "id": 6,
+          "links": [],
+          "mode": "markdown",
+          "span": 12,
+          "title": "About CPU Swimlanes",
+          "type": "text"
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "About CPU Swimlanes",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_MACBOOK-INFLUX}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "hostname",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"cpu\" WITH KEY = \"host\"",
+        "refresh": 1,
+        "regex": "/^([-a-zA-Z0-9]+)/",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_MACBOOK-INFLUX}",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "cpu",
+        "options": [],
+        "query": "SHOW TAG VALUES FROM \"cpu\" WITH KEY = \"cpu\"",
+        "refresh": 1,
+        "regex": "/^cpu[0-9]/",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "2017-04-02T21:24:30.282Z",
+    "to": "2017-04-02T21:58:59.393Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "CPU swimlane",
+  "version": 12
+}
