@@ -86,7 +86,7 @@ except Exception as exc:
 fmt = '{:40s} {}'
 print(fmt.format('filename', 'title'))
 for dashboard in dashboard_list:
-    filename = dashboard.get('uri', '').split('/')[-1]
+    filename = dashboard.get('uri', '').split('/')[-1] + '.json'
     print(fmt.format(filename, dashboard.get('title', '-')))
     if not options.list and filename:
         try:
