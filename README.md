@@ -8,4 +8,6 @@ The metrics can vary by measured OS. Dashboards that are specific to a single OS
 
 * CPU swimlane: shows CPU usage, broken out by processor, similar to mpstat
 
+* iostats from diskio: shows `iostat -x` values from the telegraf diskio collector 
+
 Dashboards are licensed under a Creative Commons 4.0 Attribution International License by Richard.Elling@RichardElling.com
