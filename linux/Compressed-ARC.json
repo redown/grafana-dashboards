@@ -52,7 +52,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1557614081136,
+  "iteration": 1557614081139,
   "links": [],
   "panels": [
     {
@@ -397,7 +397,7 @@
       "type": "row"
     },
     {
-      "content": "The Compressed ARC dashboard shows the space efficiency for ZFS Adjustable Replacement Cache (ARC).\n\nWhen both compressed ARC feature is data compression is enabled, then the ARC keeps the data read from\ndisk in compressed form. When the data is actively being read, the data is uncompressed. This is\nexpected to improve ARC efficiency because the uncompressed size of the data can be much larger than\nphysical RAM.\n\n+ _ARC Space Efficiency Improvement from Compression_ shows the ratio of uncompressed to compressed size\nas a percentage. A value of 0% indicates that the data is not compressed. A value of 100% indicates the\nuncompressed size is 2x the compressed size. Note: if there are no pools imported, then the ratio can\nappear to be overly optimistic because the values are close to zero.\n\n+ _Compressed ARC Size_ shows the sizes in bytes of:\n  + _active uncompressed_ is the size of uncompressed data. In arcstats this is the *overhead_size*. \n    This is stacked with _compressed data size_\n  + _compressed data size_ is the size of the compressed data. In arcstats this is the *compressed_size*.\n    This is stacked with _active uncompressed_\n  + _uncompressed data size_ is the size of the data if all was uncompressed. This value can be much larger\n    than the available RAM.\n  + _total ARC size_ is the current total size of all items in the ARC, including all data and internal\n    data structures.\n",
+      "content": "The Compressed ARC dashboard shows the space efficiency for ZFS Adjustable Replacement Cache (ARC).\n\nWhen both compressed ARC feature is data compression is enabled, then the ARC keeps the data read from\ndisk in compressed form. When the data is actively being read, the data is uncompressed. This is\nexpected to improve ARC efficiency because the uncompressed size of the data can be much larger than\nphysical RAM.\n\n+ _ARC Space Efficiency Improvement from Compression_ shows the ratio of uncompressed to compressed size\nas a percentage. A value of 0% indicates that the data is not compressed. A value of 100% indicates the\nuncompressed size is 2x the compressed size. Note: if there are no pools imported, then the ratio can\nappear to be overly optimistic because the values are close to zero.\n\n+ _Compressed ARC Size_ shows the sizes in bytes of:\n  + _active uncompressed_ is the size of uncompressed data. In arcstats this is the *overhead_size*. \n    This is stacked with _compressed data size_\n  + _compressed data size_ is the size of the compressed data. In arcstats this is the *compressed_size*.\n    This is stacked with _active uncompressed_\n  + _uncompressed data size_ is the size of the data if all was uncompressed. In arcstats this is the \n    *uncompressed_size*. This value can be much larger than the available RAM.\n  + _total ARC size_ is the current total size of all items in the ARC, including all data and internal\n    data structures.\n",
       "gridPos": {
         "h": 7,
         "w": 24,
@@ -471,5 +471,5 @@
   "timezone": "",
   "title": "Compressed ARC",
   "uid": "97LnNsmZk",
-  "version": 5
+  "version": 6
 }
